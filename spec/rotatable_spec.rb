@@ -29,5 +29,9 @@ describe Rotatable do
     it "raises argument error if rotation number is negative" do
       lambda { rotx -1, 'Hello, World' }.should raise_error(ArgumentError)
     end
+
+    it "raises argument error if rotation number is not an integer" do
+      lambda { rotx 'bogus', 'Hello, World' }.should raise_error(ArgumentError)
+    end
   end
 end
