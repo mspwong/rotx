@@ -2,6 +2,16 @@ module Rotatable
   attr_reader :operator, :rotation_num
 
   def rotx(rotation_num, string, cipher=:encrypt)
+    validate_args rotation_num, cipher
+
+    string.chars.map do |char|
+      rotate char
+    end.join
+  end
+
+  private
+
+  def validate_args(rotation_num, cipher)
     raise ArgumentError, "cipher must be :encript or :descrypt" if ![:encrypt, :decrypt].include? cipher
     @operator = cipher == :encrypt ? '+' : '-'
 
@@ -11,13 +21,7 @@ module Rotatable
     rescue
       raise ArgumentError, 'rotation num must be zero or positive integer'
     end
-
-    string.chars.map do |char|
-      rotate char
-    end.join
   end
-
-  private
 
   def alphas
     @_alphas ||= ('a'..'z').to_a
@@ -33,6 +37,7 @@ module Rotatable
     end
   end
 end
+
 
 class Object
   include Rotatable
