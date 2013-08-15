@@ -15,15 +15,15 @@ module Rotatable
 
   private
 
-  def lower
-    @_lower ||= ('a'..'z').to_a
+  def alphas
+    @_alphas ||= ('a'..'z').to_a
   end
 
   def rotate(char)
-    index = lower.index char.downcase
+    index = alphas.index char.downcase
     if !!index
-      rotated = lower[(index.send(operator, rotation_num))%26]
-      char.downcase == char ? rotated : rotated.upcase
+      rotated = alphas[(index.send(operator, rotation_num))%26]
+      char == char.downcase ? rotated : rotated.upcase
     else
       char
     end
