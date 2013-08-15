@@ -20,4 +20,6 @@ describe '#rotx' do
 
   it "raises argument error if string contains non-alpha characters"
 
+  it "raises argument error if rotation number is negative"
+
 end

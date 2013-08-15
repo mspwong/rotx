@@ -7,9 +7,9 @@ class Object
     upper ||= ('A'..'Z').to_a
 
     string.chars.map do |char|
-      if lower.index(char).present?
+      if !lower.index(char).nil?
         lower[(lower.index(char).send(operator, rotation_num))%26]
-      elsif upper.index(char).present?
+      elsif !upper.index(char).nil?
         upper[(upper.index(char).send(operator, rotation_num))%26]
       else
         char
