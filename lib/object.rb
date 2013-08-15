@@ -24,11 +24,11 @@ class Object
   end
 
   def rotate(char)
-    index = lower.index(char)
+    index = lower.index char
     if !!index
       lower[(index.send(operator, rotation_num))%26]
     else
-      index = upper.index(char)
+      index = upper.index char
       if !!index
         upper[(index.send(operator, rotation_num))%26]
       else

@@ -1,12 +1,12 @@
 require 'object'
 
 describe '#rotx' do
-  it "forward rotation" do
+  it "encrytion" do
     result = rotx 10, 'Hello, World'
     result.should == 'Rovvy, Gybvn'
   end
 
-  it "reverse rotation" do
+  it "decryption" do
     result = rotx 10, 'Rovvy, Gybvn', :decrypt
     result.should == 'Hello, World'
   end
