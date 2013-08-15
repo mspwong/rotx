@@ -23,15 +23,15 @@ describe Rotatable do
     end
 
     it "raises argument error if cipher is invalid" do
-      lambda { rotx 10, 'Hello, World', :bogus_cipher }.should raise_error(ArgumentError)
+      lambda { rotx 10, 'Hello, World', :bogus_cipher }.should raise_error ArgumentError
     end
 
     it "raises argument error if positions is negative" do
-      lambda { rotx -1, 'Hello, World' }.should raise_error(ArgumentError)
+      lambda { rotx -1, 'Hello, World' }.should raise_error ArgumentError
     end
 
     it "raises argument error if positions is not an integer" do
-      lambda { rotx 'bogus', 'Hello, World' }.should raise_error(ArgumentError)
+      lambda { rotx 'bogus', 'Hello, World' }.should raise_error ArgumentError
     end
   end
 end
