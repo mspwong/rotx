@@ -2,17 +2,17 @@ require 'rotatable'
 
 describe Rotatable do
   describe '#rotx' do
-    it "encrytion" do
+    it "encrytion rotates forward" do
       result = rotx 10, 'Hello, World'
       result.should == 'Rovvy, Gybvn'
     end
 
-    it "decryption" do
+    it "decryption rotates backwards" do
       result = rotx 10, 'Rovvy, Gybvn', :decrypt
       result.should == 'Hello, World'
     end
 
-    it "positions greater than 26 " do
+    it "positions greater than 26 rotates forward and wraps" do
       result = rotx 36, 'Hello, World'
       result.should == 'Rovvy, Gybvn'
     end
