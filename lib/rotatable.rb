@@ -19,21 +19,13 @@ module Rotatable
     @_lower ||= ('a'..'z').to_a
   end
 
-  def upper
-    @_upper ||= ('A'..'Z').to_a
-  end
-
   def rotate(char)
-    index = lower.index char
+    index = lower.index char.downcase
     if !!index
-      lower[(index.send(operator, rotation_num))%26]
+      rotated = lower[(index.send(operator, rotation_num))%26]
+      char.downcase == char ? rotated : rotated.upcase
     else
-      index = upper.index char
-      if !!index
-        upper[(index.send(operator, rotation_num))%26]
-      else
-        char
-      end
+      char
     end
   end
 end
