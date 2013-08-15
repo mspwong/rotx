@@ -1,25 +1,32 @@
 require 'object'
 
 describe '#rotx' do
-  it "'Hello, World' ==> 'Rovvy, Gybvn'" do
+  it "forward rotation" do
     result = rotx 10, 'Hello, World'
     result.should == 'Rovvy, Gybvn'
   end
 
-  it "'Rovvy, Gybvn' ==> 'Hello, World'" do
+  it "reverse rotation" do
     result = rotx 10, 'Rovvy, Gybvn', :decrypt
     result.should == 'Hello, World'
   end
 
-  it "'Hello, World' ==> 'Rovvy, Gybvn'" do
+  it "rotation number greater than 26 " do
     result = rotx 36, 'Hello, World'
     result.should == 'Rovvy, Gybvn'
   end
 
-  it "raises argument error if cipher is invalid"
+  it "rotation number of zero does not alter string" do
+    result = rotx 0, 'Hello, World'
+    result.should == 'Hello, World'
+  end
 
-  it "raises argument error if string contains non-alpha characters"
+  it "raises argument error if cipher is invalid" do
+    lambda { rotx 10, 'Hello, World', :bogus_cipher }.should raise_error(ArgumentError)
+  end
 
-  it "raises argument error if rotation number is negative"
+  it "raises argument error if rotation number is negative" do
+    lambda { rotx -1, 'Hello, World' }.should raise_error(ArgumentError)
+  end
 
 end

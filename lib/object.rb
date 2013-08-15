@@ -5,7 +5,7 @@ class Object
     raise ArgumentError if ![:encrypt, :decrypt].include? cipher
     @operator = cipher == :encrypt ? '+' : '-'
 
-    raise ArgumentError if rotation_num.to_i == 0
+    raise ArgumentError if rotation_num.to_i < 0
     @rotation_num = rotation_num
 
     string.chars.map do |char|
