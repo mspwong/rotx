@@ -1,4 +1,4 @@
-class Object
+module Rotatable
   attr_reader :operator, :rotation_num
 
   def rotx(rotation_num, string, cipher=:encrypt)
@@ -36,4 +36,8 @@ class Object
       end
     end
   end
+end
+
+class Object
+  include Rotatable
 end
